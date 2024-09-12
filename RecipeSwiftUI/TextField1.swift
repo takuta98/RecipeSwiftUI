@@ -12,6 +12,7 @@ struct TextField1: View {
     @Environment(\.colorScheme) var colorScheme
     @State var text = ""
     @FocusState var isTyping: Bool
+    let label: String
     
     var body: some View {
         VStack() {
@@ -25,15 +26,15 @@ struct TextField1: View {
                         in: RoundedRectangle(cornerRadius: 14).stroke(lineWidth: 2)
                     )
                 
-                Text("First Name")
+                Text(label)
                     .padding(.horizontal, 5)
                     .background(
                         colorScheme == .dark ?
                             .black.opacity(isTyping || !text.isEmpty ? 1 : 0) :
                             .white.opacity(isTyping || !text.isEmpty ? 1 : 0))
-                    .foregroundStyle(isTyping || !text.isEmpty ? .blue : Color.primary)
+                    .foregroundStyle(isTyping ? .blue : Color.primary)
                     .padding(.leading)
-                    .offset(y:isTyping ? -27 : 0)
+                    .offset(y:isTyping || !text.isEmpty ? -27 : 0)
                     .font(.headline)
                     .onTapGesture {
                         isTyping.toggle()
@@ -46,5 +47,5 @@ struct TextField1: View {
 }
 
 #Preview {
-    TextField1()
+    TextField1(label: "First Name")
 }
