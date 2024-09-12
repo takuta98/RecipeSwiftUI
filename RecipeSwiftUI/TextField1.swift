@@ -9,10 +9,11 @@ import SwiftUI
 
 struct TextField1: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    @State var text = ""
-    @FocusState var isTyping: Bool
     let label: String
+    @Environment(\.colorScheme) var colorScheme
+    @Binding var text: String
+    @FocusState var isTyping: Bool
+    
     
     var body: some View {
         VStack() {
@@ -47,5 +48,5 @@ struct TextField1: View {
 }
 
 #Preview {
-    TextField1(label: "First Name")
+    TextField1(label: "First Name", text: .constant(""))
 }

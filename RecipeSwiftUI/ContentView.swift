@@ -9,10 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var firstName  = ""
+    @State var lastName = ""
+    
     var body: some View {
-        VStack(spacing: 20) {
-            TextField1(label: "First Name")
-            TextField1(label: "Last Name")
+        VStack(alignment: .leading, spacing: 20) {
+            TextField1(label: "First Name", text: $firstName)
+            TextField1(label: "Last Name", text: $lastName)
         }
         .padding()
     }
